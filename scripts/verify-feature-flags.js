@@ -39,11 +39,19 @@ const getAndCompareFeatureFlags = async () => {
 
 const main = async () => {
   await getAndCompareFeatureFlags();
-  console.log(
-    `Mismatched feature flags for ${envToCheck} and ${envToCheckAgainst}: `
-  );
-  for (featureFlag of mismatchedFeatureFlags) {
-    console.log(featureFlag.key);
+
+  if (mismatchedFeatureFlags.length) {
+    console.log(
+      `Mismatched feature flags for ${envToCheck} and ${envToCheckAgainst}: `
+    );
+    for (featureFlag of mismatchedFeatureFlags) {
+      console.log(featureFlag.key);
+    }
+    process.exit(1);
+  } else {
+    console.log(
+      `Feature flags match for ${envToCheck} and ${envToCheckAgainst}`
+    );
   }
 };
 
