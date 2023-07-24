@@ -22,7 +22,6 @@ const getAndCompareFeatureFlags = async () => {
   );
 
   const featureFlags = response.data.items;
-  console.log(featureFlags[0]);
 
   for (featureFlag of featureFlags) {
     const environments = featureFlag.environments;
@@ -45,7 +44,9 @@ const main = async () => {
       `Mismatched feature flags for ${envToCheck} and ${envToCheckAgainst}: `
     );
     for (featureFlag of mismatchedFeatureFlags) {
-      console.log(featureFlag.key);
+      console.log(
+        `${featureFlag.key}: ${envToCheck} - ${featureFlag.environments[envToCheck].on} | ${envToCheckAgainst} - ${featureFlag.environments[envToCheckAgainst].on} `
+      );
     }
     process.exit(1);
   } else {
