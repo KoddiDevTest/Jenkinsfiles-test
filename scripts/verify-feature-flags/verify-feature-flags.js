@@ -31,7 +31,7 @@ const getAndCompareFeatureFlags = async () => {
       continue;
     }
 
-    if (environments[envToCheck].on !== environments[envToCheckAgainst].on) {
+    if (environments[envToCheck]?.on !== environments[envToCheckAgainst]?.on) {
       mismatchedFeatureFlags.push(featureFlag);
     }
   }
@@ -76,7 +76,7 @@ const main = async () => {
     );
     for (featureFlag of mismatchedFeatureFlags) {
       console.log(
-        `${featureFlag.key}: ${envToCheckName}-${featureFlag.environments[envToCheck].on}, ${envToCheckAgainstName}-${featureFlag.environments[envToCheckAgainst].on}`
+        `${featureFlag.key}: ${envToCheckName}-${featureFlag.environments[envToCheck]?.on}, ${envToCheckAgainstName}-${featureFlag.environments[envToCheckAgainst]?.on}`
       );
     }
     process.exit(1);
