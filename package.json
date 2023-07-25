@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "build": "ncc build scripts/verify-feature-flags.js -o dist",
-    "start": "node scripts/verify-feature-flags.js",
-    "dev": "nodemon scripts/verify-feature-flags.js"
+    "build": "ncc build scripts/verify-feature-flags/verify-feature-flags.js -o scripts/verify-feature-flags",
+    "start": "node scripts/verify-feature-flags/index.js",
+    "dev": "nodemon scripts/verify-feature-flags/index.js"
   },
   "dependencies": {
     "@vercel/ncc": "^0.36.1",
