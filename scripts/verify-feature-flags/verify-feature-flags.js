@@ -36,17 +36,44 @@ const getAndCompareFeatureFlags = async () => {
   }
 };
 
+const printEnvironmentNames = (env) => {
+  switch (env) {
+    case "development":
+      return "Development";
+    case "test":
+      return "Staging";
+    case "production":
+      return "Production";
+    default:
+      return "Unknown";
+  }
+};
+
 const main = async () => {
   await getAndCompareFeatureFlags();
 
   if (mismatchedFeatureFlags.length) {
-    console.log("Mismatched feature flags");
+    console.log(
+      `Mismatched feature flags for ${printEnvironmentNames(
+        envToCheck
+      )} against ${printEnvironmentNames(envToCheckAgainst)}:`
+    );
     for (featureFlag of mismatchedFeatureFlags) {
-      console.log(featureFlag.key);
+      console.log(
+        `${featureFlag.key}: ${printEnvironmentNames(envToCheck)}-${
+          featureFlag.environments[envToCheck].on
+        }, ${printEnvironmentNames(envToCheckAgainst)}-${
+          featureFlag.environments[envToCheckAgainst].on
+        }`
+      );
     }
     process.exit(1);
   } else {
-    console.log("All feature flags match");
+    console.log(
+      `All feature flags match for ${printEnvironmentNames(
+        envToCheck
+      )} against ${printEnvironmentNames(envToCheckAgainst)}:`
+    );
   }
 };
 
