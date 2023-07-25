@@ -8055,27 +8055,22 @@ const main = async () => {
   await getAndCompareFeatureFlags();
   await getAndParseAllEnvironments();
 
+  const envToCheckName = getEnvName(envToCheck);
+  const envToCheckAgainstName = getEnvName(envToCheckAgainst);
+
   if (mismatchedFeatureFlags.length) {
     console.log(
-      `Mismatched feature flags for ${getEnvName(
-        envToCheck
-      )} against ${getEnvName(envToCheckAgainst)}:`
+      `Mismatched feature flags for ${envToCheckName} against ${envToCheckAgainstName}:`
     );
     for (featureFlag of mismatchedFeatureFlags) {
       console.log(
-        `${featureFlag.key}: ${getEnvName(envToCheck)}-${
-          featureFlag.environments[envToCheck].on
-        }, ${getEnvName(envToCheckAgainst)}-${
-          featureFlag.environments[envToCheckAgainst].on
-        }`
+        `${featureFlag.key}: ${envToCheckName}-${featureFlag.environments[envToCheck].on}, ${envToCheckAgainstName}-${featureFlag.environments[envToCheckAgainst].on}`
       );
     }
     process.exit(1);
   } else {
     console.log(
-      `All feature flags match for ${getEnvName(
-        envToCheck
-      )} against ${getEnvName(envToCheckAgainst)}!`
+      `All feature flags match for ${envToCheckName} against ${envToCheckAgainstName}!`
     );
   }
 };
