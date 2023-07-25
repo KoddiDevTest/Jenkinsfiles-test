@@ -8000,14 +8000,16 @@ const envToCheckAgainst = process.env.ENV_TO_CHECK_AGAINST;
 const mismatchedFeatureFlags = [];
 
 const getAndCompareFeatureFlags = async () => {
-  const response = await axios.get(
-    `https://app.launchdarkly.com/api/v2/flags/${projectKey}`,
-    {
+  const response = await axios
+    .get(`https://app.launchdarkly.com/api/v2/flags/${projectKey}`, {
       headers: {
         Authorization: `${apiKey}`,
       },
-    }
-  );
+    })
+    .catch((error) => {
+      console.log(error);
+      process.exit(1);
+    });
 
   const featureFlags = response.data.items;
 
