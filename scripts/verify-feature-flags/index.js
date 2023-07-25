@@ -8034,15 +8034,11 @@ const main = async () => {
       `Mismatched feature flags for ${envToCheck} and ${envToCheckAgainst}: `
     );
     for (featureFlag of mismatchedFeatureFlags) {
-      console.log(
-        `${featureFlag.key}: ${envToCheck} - ${featureFlag.environments[envToCheck].on} | ${envToCheckAgainst} - ${featureFlag.environments[envToCheckAgainst].on} `
-      );
+      console.log(featureFlag.key);
     }
     process.exit(1);
   } else {
-    console.log(
-      `Feature flags match for ${envToCheck} and ${envToCheckAgainst}`
-    );
+    console.log("All feature flags match");
   }
 };
 
