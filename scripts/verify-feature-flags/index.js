@@ -8030,9 +8030,7 @@ const main = async () => {
   await getAndCompareFeatureFlags();
 
   if (mismatchedFeatureFlags.length) {
-    console.log(
-      `Mismatched feature flags for ${envToCheck} and ${envToCheckAgainst}: `
-    );
+    console.log("Mismatched feature flags");
     for (featureFlag of mismatchedFeatureFlags) {
       console.log(featureFlag.key);
     }
