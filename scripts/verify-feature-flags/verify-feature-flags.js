@@ -31,8 +31,6 @@ const getAndCompareFeatureFlags = async () => {
       mismatchedFeatureFlags.push(featureFlag);
     }
   }
-
-  console.log("hello");
 };
 
 const getAndParseAllEnvironments = async () => {
