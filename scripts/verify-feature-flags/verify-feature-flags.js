@@ -26,15 +26,13 @@ const getAndCompareFeatureFlags = async () => {
 
   for (featureFlag of featureFlags) {
     const environments = featureFlag.environments;
-    if (!environments[envToCheck] || !environments[envToCheckAgainst]) {
-      mismatchedFeatureFlags.push(featureFlag);
-      continue;
-    }
 
     if (environments[envToCheck]?.on !== environments[envToCheckAgainst]?.on) {
       mismatchedFeatureFlags.push(featureFlag);
     }
   }
+
+  console.log("hello");
 };
 
 const getAndParseAllEnvironments = async () => {
