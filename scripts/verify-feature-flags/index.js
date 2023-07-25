@@ -1,4 +1,3 @@
-#!/usr/bin/node
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -7987,7 +7986,6 @@ module.exports = JSON.parse('{"application/1d-interleaved-parityfec":{"source":"
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-
 (__nccwpck_require__(437).config)();
 const axios = __nccwpck_require__(757);
 const fs = __nccwpck_require__(147);
